@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {getMovies} from "../services/fakeMovieService";
 import LikeComponent from "./common/like_component";
+
 class Movies extends Component {
     state = {
         movies: getMovies(),
@@ -12,9 +13,24 @@ class Movies extends Component {
             movies: moviesArray
         })
     }
+    handleLike = movie => {
+        console.log("liked event occurred")
+        let movies = [...this.state.movies];
+        const index = movies.indexOf(movie)
+        console.log(movie)
+        console.log(index)
+        console.log(movies[index].liked)
+        movies[index]={...movies[index]}
+        movies[index].liked = !movies[index].liked
+        // movies[index] = !movie.liked
+        console.log(movies[index].liked)
+        this.setState({
+            movies
+        })
+    };
 
     render() {
-        const {length:moviesCount}=this.state.movies;
+        const {length: moviesCount} = this.state.movies;
         if (moviesCount === 0)
             return <p>There are no Movies in the database</p>
 
@@ -38,7 +54,8 @@ class Movies extends Component {
                         <td>{movie.genre.name}</td>
                         <td>{movie.numberInStock}</td>
                         <td>{movie.dailyRentalRate}</td>
-                        <td><LikeComponent liked={true}/></td>
+                        <td><LikeComponent key={movie._id} liked={movie.liked} onClick={() => this.handleLike(movie)}/>
+                        </td>
                         <td>
                             <button onClick={() => this.handleDelete(movie)} className="btn btn-danger btn-sm">Delete
                             </button>
