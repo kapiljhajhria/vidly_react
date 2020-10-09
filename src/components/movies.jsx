@@ -6,8 +6,8 @@ import Pagination from "./common/pagination_component";
 class Movies extends Component {
     state = {
         movies: getMovies(),
-        pageNo:1,
         pageSize:4,
+        currentPage:1
     }
     handleDelete = movie => {
         const moviesArray = this.state.movies.filter(m => m._id !== movie._id);
@@ -31,13 +31,14 @@ class Movies extends Component {
             movies
         })
     };
-    handlePageChange=()=>{
+    handlePageChange=(pageNo)=>{
         const movies=[...this.state.movies]
-
+        console.log("page no is"+pageNo)
+        this.setState({currentPage:pageNo})
     }
     render() {
         const {length: moviesCount} = this.state.movies;
-        const {pageNo,pageSize} = this.state;
+        const {pageNo,pageSize,currentPage} = this.state;
         if (moviesCount === 0)
             return <p>There are no Movies in the database</p>
 
@@ -56,7 +57,7 @@ class Movies extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {this.state.movies.slice((pageNo-1)*pageSize,(pageNo)*pageSize).map(movie => <tr key={movie._id}>
+                    {this.state.movies.map(movie => <tr key={movie._id}>
                         <td>{movie.title}</td>
                         <td>{movie.genre.name}</td>
                         <td>{movie.numberInStock}</td>
@@ -74,6 +75,7 @@ class Movies extends Component {
                     onPageChange={this.handlePageChange}
                     itemsCount={moviesCount}
                     pageSize={pageSize}
+                    currentPage={currentPage}
                 />
             </React.Fragment>
         );
