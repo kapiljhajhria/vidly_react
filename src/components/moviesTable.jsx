@@ -1,31 +1,25 @@
 import React from "react";
 import LikeComponent from "./common/like_component";
+import TableHeader from "./common/tableHeader";
 
 function MoviesTable(props) {
-    const {onLike, onDelete, movies} = props;
+    const {onLike, onDelete, movies,sortColumn,onSort} = props;
 
-    const raiseSort = (path) => {
-        const sortColumn = {...props.sortColumn}
-        if (path === sortColumn.path) {
-            sortColumn.order = sortColumn.order === 'asc' ? 'desc' : 'asc';
-        } else {
-            sortColumn.path = path;
-            sortColumn.order = 'asc'
-        }
-        props.onSort(sortColumn);
-    }
+    const columns = [
+        {path: 'title', label: "Title"},
+        {path: 'genre.name', label: "Genre"},
+        {path: 'numberInStock', label: "Stock"},
+        {path: 'dailyRentalRate', label: "Rate"},
+        {key:'like'},//for like button col
+        {key:'delete'},//for delete btn col
+    ]
     return (
         <table className="table">
-            <thead>
-            <tr>
-                <th onClick={() =>raiseSort('title')}>Title</th>
-                <th onClick={() => raiseSort('genre.name')}>Genre</th>
-                <th onClick={() => raiseSort('numberInStock')}>Stock</th>
-                <th onClick={() => raiseSort('dailyRentalRate')}>Rate</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
+            <TableHeader
+                columns={columns}
+                sortColumn={sortColumn}
+                onSort={onSort}
+            />
             <tbody>
             {movies.map(movie => <tr key={movie._id}>
                 <td>{movie.title}</td>
