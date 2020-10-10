@@ -3,14 +3,25 @@ import LikeComponent from "./common/like_component";
 
 function MoviesTable(props) {
     const {onLike, onDelete, movies, onSort} = props;
+
+    const raiseSort = (path) => {
+        const sortColumn = {...props.sortColumn}
+        if (path === sortColumn.path) {
+            sortColumn.order = sortColumn.order === 'asc' ? 'desc' : 'asc';
+        } else {
+            sortColumn.path = path;
+            sortColumn.order = 'asc'
+        }
+        props.onSort(sortColumn);
+    }
     return (
         <table className="table">
             <thead>
             <tr>
-                <th onClick={() => onSort('title')}>Title</th>
-                <th onClick={() => onSort('genre.name')}>Genre</th>
-                <th onClick={() => onSort('numberInStock')}>Stock</th>
-                <th onClick={() => onSort('dailyRentalRate')}>Rate</th>
+                <th onClick={() =>raiseSort('title')}>Title</th>
+                <th onClick={() => raiseSort('genre.name')}>Genre</th>
+                <th onClick={() => raiseSort('numberInStock')}>Stock</th>
+                <th onClick={() => raiseSort('dailyRentalRate')}>Rate</th>
                 <th></th>
                 <th></th>
             </tr>
