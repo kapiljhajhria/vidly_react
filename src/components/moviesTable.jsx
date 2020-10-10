@@ -1,6 +1,7 @@
 import React from "react";
 import LikeComponent from "./common/like_component";
 import TableHeader from "./common/tableHeader";
+import TableBody from "./common/tableBody";
 
 function MoviesTable(props) {
     const {onLike, onDelete, movies,sortColumn,onSort} = props;
@@ -19,6 +20,10 @@ function MoviesTable(props) {
                 columns={columns}
                 sortColumn={sortColumn}
                 onSort={onSort}
+            />
+            <TableBody
+            data={movies}
+            columns={columns}
             />
             <tbody>
             {movies.map(movie => <tr key={movie._id}>
