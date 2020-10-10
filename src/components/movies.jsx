@@ -5,7 +5,7 @@ import {paginate} from "../utils/paginate";
 import ListGroup from "./common/listGroup";
 import {getGenres} from "../services/fakeGenreService";
 import MoviesTable from "./moviesTable";
-
+import _ from 'lodash';
 
 class Movies extends Component {
     state = {
@@ -14,10 +14,14 @@ class Movies extends Component {
         currentPage: 1,
         genres: [],
         selectedGenre: "",
+        sortColumn: {
+            path: "",
+            order: ""
+        }
     }
 
     componentDidMount() {
-        const allGenres = [{name: 'All Genres',_id:""}, ...getGenres()]
+        const allGenres = [{name: 'All Genres', _id: ""}, ...getGenres()]
 
         this.setState({
             movies: getMovies(),
@@ -57,18 +61,29 @@ class Movies extends Component {
         this.setState({selectedGenre: genre, currentPage: 1})
     }
     handleSort = (path) => {
-        console.log(path);
+        const sortColumn = {...this.state.sortColumn}
+        if (path === sortColumn.path) {
+            sortColumn.order = sortColumn.order === 'asc' ? 'desc' : 'asc';
+        } else {
+            sortColumn.path = path;
+            sortColumn.order = 'asc'
+        }
+        this.setState({sortColumn})
+        // console.log(path);
     }
 
     render() {
         const {length: moviesCount} = this.state.movies;
-        const {pageNo, pageSize, currentPage, movies: allMovies, selectedGenre} = this.state;
+        const {pageNo, pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn} = this.state;
         if (moviesCount === 0)
             return <p>There are no Movies in the database</p>
 
         //get selected genres and then paginate
         const filtered = (selectedGenre && selectedGenre._id) ? allMovies.filter(m => m.genre._id === selectedGenre._id) : allMovies;
-        const movies = paginate(filtered, currentPage, pageSize);
+        //sort data now
+        const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order])
+        //paginate data now
+        const movies = paginate(sorted, currentPage, pageSize);
         return (
             <div className="row">
                 <div className="col-3">
