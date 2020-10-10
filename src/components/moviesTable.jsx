@@ -2,7 +2,7 @@ import React from "react";
 import LikeComponent from "./common/like_component";
 
 function MoviesTable(props) {
-    const {onLike, onDelete, movies, onSort} = props;
+    const {onLike, onDelete, movies} = props;
 
     const raiseSort = (path) => {
         const sortColumn = {...props.sortColumn}

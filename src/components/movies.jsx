@@ -52,7 +52,6 @@ class Movies extends Component {
         })
     };
     handlePageChange = (pageNo) => {
-        const movies = [...this.state.movies]
         console.log("page no is" + pageNo)
         this.setState({currentPage: pageNo})
     }
@@ -67,7 +66,7 @@ class Movies extends Component {
 
     render() {
         const {length: moviesCount} = this.state.movies;
-        const {pageNo, pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn} = this.state;
+        const { pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn} = this.state;
         if (moviesCount === 0)
             return <p>There are no Movies in the database</p>
 
