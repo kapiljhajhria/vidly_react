@@ -53,7 +53,7 @@ class Movies extends Component {
     }
     handleGenreChange = (genre) => {
         console.log("selected genre is " + genre)
-        this.setState({selectedGenre: genre})
+        this.setState({selectedGenre: genre,currentPage:1})
     }
 
     render() {
