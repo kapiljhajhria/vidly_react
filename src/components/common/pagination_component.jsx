@@ -19,6 +19,7 @@ function Pagination(props) {
                         className={page === currentPage ? "page-item active" : "page-item"}
                         onClick={() => props.onPageChange(page)}
                     >
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <a
                             className="page-link">{page}
                         </a>
