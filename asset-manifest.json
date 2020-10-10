@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/*/static/css/main.c2893b68.chunk.css",
-    "main.js": "/*/static/js/main.2b620c28.chunk.js",
-    "main.js.map": "/*/static/js/main.2b620c28.chunk.js.map",
-    "runtime-main.js": "/*/static/js/runtime-main.29978fc4.js",
-    "runtime-main.js.map": "/*/static/js/runtime-main.29978fc4.js.map",
-    "static/css/2.51db1436.chunk.css": "/*/static/css/2.51db1436.chunk.css",
-    "static/js/2.4f4ae0ec.chunk.js": "/*/static/js/2.4f4ae0ec.chunk.js",
-    "static/js/2.4f4ae0ec.chunk.js.map": "/*/static/js/2.4f4ae0ec.chunk.js.map",
-    "index.html": "/*/index.html",
-    "precache-manifest.b3ae41bb94ccac382d9181bd9a326521.js": "/*/precache-manifest.b3ae41bb94ccac382d9181bd9a326521.js",
-    "service-worker.js": "/*/service-worker.js",
-    "static/css/2.51db1436.chunk.css.map": "/*/static/css/2.51db1436.chunk.css.map",
-    "static/css/main.c2893b68.chunk.css.map": "/*/static/css/main.c2893b68.chunk.css.map",
-    "static/js/2.4f4ae0ec.chunk.js.LICENSE.txt": "/*/static/js/2.4f4ae0ec.chunk.js.LICENSE.txt",
-    "static/media/font-awesome.css": "/*/static/media/fontawesome-webfont.fee66e71.woff"
+    "main.css": "/vidly_react/static/css/main.c2893b68.chunk.css",
+    "main.js": "/vidly_react/static/js/main.e8f3a1e0.chunk.js",
+    "main.js.map": "/vidly_react/static/js/main.e8f3a1e0.chunk.js.map",
+    "runtime-main.js": "/vidly_react/static/js/runtime-main.c551ddc5.js",
+    "runtime-main.js.map": "/vidly_react/static/js/runtime-main.c551ddc5.js.map",
+    "static/css/2.aeb3ddf4.chunk.css": "/vidly_react/static/css/2.aeb3ddf4.chunk.css",
+    "static/js/2.4f4ae0ec.chunk.js": "/vidly_react/static/js/2.4f4ae0ec.chunk.js",
+    "static/js/2.4f4ae0ec.chunk.js.map": "/vidly_react/static/js/2.4f4ae0ec.chunk.js.map",
+    "index.html": "/vidly_react/index.html",
+    "precache-manifest.2b491298d4bb72fc5524fb0f806ad2d1.js": "/vidly_react/precache-manifest.2b491298d4bb72fc5524fb0f806ad2d1.js",
+    "service-worker.js": "/vidly_react/service-worker.js",
+    "static/css/2.aeb3ddf4.chunk.css.map": "/vidly_react/static/css/2.aeb3ddf4.chunk.css.map",
+    "static/css/main.c2893b68.chunk.css.map": "/vidly_react/static/css/main.c2893b68.chunk.css.map",
+    "static/js/2.4f4ae0ec.chunk.js.LICENSE.txt": "/vidly_react/static/js/2.4f4ae0ec.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.css": "/vidly_react/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.29978fc4.js",
-    "static/css/2.51db1436.chunk.css",
+    "static/js/runtime-main.c551ddc5.js",
+    "static/css/2.aeb3ddf4.chunk.css",
     "static/js/2.4f4ae0ec.chunk.js",
     "static/css/main.c2893b68.chunk.css",
-    "static/js/main.2b620c28.chunk.js"
+    "static/js/main.e8f3a1e0.chunk.js"
   ]
 }
