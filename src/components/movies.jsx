@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {getMovies} from "../services/fakeMovieService";
-import LikeComponent from "./common/like_component";
 import Pagination from "./common/pagination_component";
 import {paginate} from "../utils/paginate";
 import ListGroup from "./common/listGroup";
@@ -55,7 +54,10 @@ class Movies extends Component {
     }
     handleGenreChange = (genre) => {
         console.log("selected genre is " + genre)
-        this.setState({selectedGenre: genre,currentPage:1})
+        this.setState({selectedGenre: genre, currentPage: 1})
+    }
+    handleSort = (path) => {
+        console.log(path);
     }
 
     render() {
@@ -80,9 +82,10 @@ class Movies extends Component {
                 <div className="col">
                     <p>Showing {filtered.length} movies in the database</p>
                     <MoviesTable
-                    movies={movies}
-                    onLike={this.handleLike}
-                    onDelete={this.handleDelete}
+                        movies={movies}
+                        onLike={this.handleLike}
+                        onDelete={this.handleDelete}
+                        onSort={this.handleSort}
                     />
                     <Pagination
                         onPageChange={this.handlePageChange}
