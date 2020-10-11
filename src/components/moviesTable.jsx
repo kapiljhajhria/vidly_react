@@ -1,7 +1,6 @@
 import React from "react";
 import LikeComponent from "./common/like_component";
-import TableHeader from "./common/tableHeader";
-import TableBody from "./common/tableBody";
+import Table from "./common/table";
 
 function MoviesTable(props) {
     const {onLike, onDelete, movies, sortColumn, onSort} = props;
@@ -22,17 +21,12 @@ function MoviesTable(props) {
         },//for delete btn col
     ]
     return (
-        <table className="table">
-            <TableHeader
-                columns={columns}
-                sortColumn={sortColumn}
-                onSort={onSort}
-            />
-            <TableBody
-                data={movies}
-                columns={columns}
-            />
-        </table>
+        <Table
+            columns={columns}
+            onSort={onSort}
+            data={movies}
+            sortColumn={sortColumn}
+        />
     )
 }
 
