@@ -63,19 +63,24 @@ class Movies extends Component {
         this.setState({sortColumn})
         // console.log(path);
     }
-
-    render() {
-        const {length: moviesCount} = this.state.movies;
+    getPageData=()=>{
         const { pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn} = this.state;
-        if (moviesCount === 0)
-            return <p>There are no Movies in the database</p>
-
         //get selected genres and then paginate
         const filtered = (selectedGenre && selectedGenre._id) ? allMovies.filter(m => m.genre._id === selectedGenre._id) : allMovies;
         //sort data now
         const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order])
         //paginate data now
         const movies = paginate(sorted, currentPage, pageSize);
+
+        return {totalCount:filtered.length,data:movies}
+    }
+    render() {
+        const {length: moviesCount} = this.state.movies;
+
+        if (moviesCount === 0)
+            return <p>There are no Movies in the database</p>
+        const { pageSize, currentPage, sortColumn} = this.state;
+        const {totalCount,data} = this.getPageData()
         return (
             <div className="row">
                 <div className="col-3">
@@ -87,9 +92,9 @@ class Movies extends Component {
                     />
                 </div>
                 <div className="col">
-                    <p>Showing {filtered.length} movies in the database</p>
+                    <p>Showing {totalCount} movies in the database</p>
                     <MoviesTable
-                        movies={movies}
+                        movies={data}
                         onLike={this.handleLike}
                         onDelete={this.handleDelete}
                         onSort={this.handleSort}
@@ -97,7 +102,7 @@ class Movies extends Component {
                     />
                     <Pagination
                         onPageChange={this.handlePageChange}
-                        itemsCount={filtered.length}
+                        itemsCount={totalCount}
                         pageSize={pageSize}
                         currentPage={currentPage}
                     />
