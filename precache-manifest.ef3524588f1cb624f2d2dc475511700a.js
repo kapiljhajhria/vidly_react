@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e7e41264f897e573c0d893f99a898f4c",
+    "revision": "db6ee1adf37b771abc87a4a6f6ffbdff",
     "url": "/vidly_react/index.html"
   },
   {
-    "revision": "fce341c7ab64560ec1c4",
+    "revision": "c45f60e7cdab660384a3",
     "url": "/vidly_react/static/css/2.aeb3ddf4.chunk.css"
   },
   {
-    "revision": "200872b216c7e56cb03d",
-    "url": "/vidly_react/static/css/main.dd3e108d.chunk.css"
+    "revision": "cb3950b8aeff89873410",
+    "url": "/vidly_react/static/css/main.527e9b7d.chunk.css"
   },
   {
-    "revision": "fce341c7ab64560ec1c4",
-    "url": "/vidly_react/static/js/2.4f4ae0ec.chunk.js"
+    "revision": "c45f60e7cdab660384a3",
+    "url": "/vidly_react/static/js/2.eacabfa3.chunk.js"
   },
   {
-    "revision": "90565ba0b43e1b95d2876295dfd7014d",
-    "url": "/vidly_react/static/js/2.4f4ae0ec.chunk.js.LICENSE.txt"
+    "revision": "64bea2e190f27355a76963b8cb94bb7b",
+    "url": "/vidly_react/static/js/2.eacabfa3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "200872b216c7e56cb03d",
-    "url": "/vidly_react/static/js/main.9c03ccbb.chunk.js"
+    "revision": "cb3950b8aeff89873410",
+    "url": "/vidly_react/static/js/main.b6d4e95a.chunk.js"
   },
   {
     "revision": "dec98868dd11f3ed6a3a",
