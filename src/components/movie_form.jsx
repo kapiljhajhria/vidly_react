@@ -1,7 +1,14 @@
 import React from "react";
 
-export default function MovieForm(props) {
+export default function MovieForm({match, history}) {
     return (
-        <h1>Movie Form</h1>
+        <div>
+            <h1>Movie Id: {match.params.id}</h1>
+            <button
+                onClick={() => history.push("/movies")}
+                className="btn btn-primary">
+                Save
+            </button>
+        </div>
     )
 }
