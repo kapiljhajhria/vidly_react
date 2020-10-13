@@ -26,6 +26,14 @@ export default class LoginForm extends React.Component {
         }
         return Object.keys(errors).length === 0 ? null : errors;
     }
+    validateProperty = ({name, value}) => {
+        if(name==="username"){
+            if(value.trim()==="") return "username is required";
+        }
+        if(name==="password"){
+            if(value==="") return "password is required";
+        }
+    }
     handleSubmit = (e) => {
         e.preventDefault();
 
@@ -37,10 +45,18 @@ export default class LoginForm extends React.Component {
         // console.log(this.username.current.value)
     }
     handleAccountChange = ({currentTarget: input}) => {
+        const errors = {...this.state.errors}
+        const errorMessage = this.validateProperty(input);
+
+        if (errorMessage) {
+            errors[input.name] = errorMessage
+        } else {
+            delete errors[input.name];
+        }
         const account = {...this.state.account}
         account[input.name] = input.value;
         this.setState({
-            account
+            account, errors
         })
     }
 
