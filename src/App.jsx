@@ -30,6 +30,7 @@ function App() {
                     {/*<Route path="/rentals" render={(props) => <Rentals {...props}/>}/>*/}
                     {/*<Route path="/not-found" render={(props) => <NotFound {...props}/>}/>*/}
                     <Redirect exact from="/" to="/movies"/>
+                    <Redirect exact from="/vidly_react" to="/movies"/>
                     <Redirect to="/not-found"/>
                 </Switch>
             </main>
