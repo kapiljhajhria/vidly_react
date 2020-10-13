@@ -12,8 +12,8 @@ export default class LoginForm extends React.Component {
     username = React.createRef()
 
     schema = {
-        username: Joi.string().required(),
-        password: Joi.string().required()
+        username: Joi.string().required().label("Username"),
+        password: Joi.string().required().label("Password")
     }
 
     componentDidMount() {
@@ -22,17 +22,16 @@ export default class LoginForm extends React.Component {
 
     validate = () => {
         const result = Joi.validate(this.state.account, this.schema, {abortEarly: false});
-        console.log(result);
+        if (!result.error) return null;
+
         const errors = {};
-        const {account} = this.state;
-        if (account.username.trim() === "") {
-            errors.username = "username is required"
+
+        for (let item of result.error.details) {
+            errors[item.path[0]] = item.message;
         }
-        if (account.password === "") {
-            errors.password = "password is required"
-        }
-        return Object.keys(errors).length === 0 ? null : errors;
+        return errors;
     }
+
     validateProperty = ({name, value}) => {
         if (name === "username") {
             if (value.trim() === "") return "username is required";
