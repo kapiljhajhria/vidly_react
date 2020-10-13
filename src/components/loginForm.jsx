@@ -87,7 +87,10 @@ export default class LoginForm extends React.Component {
                         type={"password"}
                         error={errors.password}
                     />
-                    <button className="btn btn-primary">
+                    <button
+                        className="btn btn-primary"
+                        disabled={this.validate()}
+                    >
                         Login
                     </button>
                 </form>
