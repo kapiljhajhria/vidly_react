@@ -30,7 +30,7 @@ export default class LoginForm extends React.Component {
         e.preventDefault();
 
         const errors = this.validate();
-        this.setState({errors});
+        this.setState({errors: errors || {}});
         if (errors) return
 
         console.log("submitted form")
@@ -45,7 +45,7 @@ export default class LoginForm extends React.Component {
     }
 
     render() {
-        const {account} = this.state;
+        const {account, errors} = this.state;
         return (
             <div>
                 <h1>Login</h1>
@@ -56,6 +56,7 @@ export default class LoginForm extends React.Component {
                         label="Username"
                         onChange={this.handleAccountChange}
                         type={"text"}
+                        error={errors.username}
                     />
                     <Input
                         name="password"
@@ -63,6 +64,7 @@ export default class LoginForm extends React.Component {
                         label="Password"
                         onChange={this.handleAccountChange}
                         type={"password"}
+                        error={errors.password}
                     />
                     <button className="btn btn-primary">
                         Login
