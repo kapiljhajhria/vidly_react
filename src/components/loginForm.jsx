@@ -5,7 +5,7 @@ export default class LoginForm extends React.Component {
 
 
     componentDidMount() {
-        this.username.current.focus();
+        // this.username.current.focus();
     }
 
     handleSubmit = (e) => {
@@ -21,11 +21,19 @@ export default class LoginForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <input ref={this.username} id="username" type="text" className="form-control"/>
+                        <input
+                            autoFocus
+                            ref={this.username}
+                            id="username"
+                            type="text"
+                            className="form-control"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input id="password" type="text" className="form-control"/>
+                        <input
+                            id="password"
+                            type="password"
+                            className="form-control"/>
                     </div>
                     <button className="btn btn-primary">
                         Login
