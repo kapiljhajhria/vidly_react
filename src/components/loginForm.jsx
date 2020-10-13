@@ -34,12 +34,10 @@ export default class LoginForm extends React.Component {
     }
 
     validateProperty = ({name, value}) => {
-        if (name === "username") {
-            if (value.trim() === "") return "username is required";
-        }
-        if (name === "password") {
-            if (value === "") return "password is required";
-        }
+        const obj = {[name]: value};
+        const schema = {[name]: this.schema[name]};
+        const {error} = Joi.validate(obj, schema);
+        return error ? error.details[0].message : null;
     }
     handleSubmit = (e) => {
         e.preventDefault();
