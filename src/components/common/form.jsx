@@ -55,4 +55,14 @@ export default class Form extends React.Component {
         return error ? error.details[0].message : null;
     }
 
+    renderButton(label) {
+        return (
+            <button
+                className="btn btn-primary"
+                disabled={this.validate()}
+            >
+                {label}
+            </button>
+        )
+    }
 }
