@@ -1,8 +1,9 @@
 import React from "react";
 import Input from "./common/input";
 import Joi from 'joi-browser';
+import Form from "./common/form";
 
-export default class LoginForm extends React.Component {
+export default class LoginForm extends Form {
     state = {
         data: {
             username: "", password: ""
@@ -20,49 +21,8 @@ export default class LoginForm extends React.Component {
         // this.username.current.focus();
     }
 
-    validate = () => {
-        const options = {abortEarly: false}
-        const {error} = Joi.validate(this.state.data, this.schema, options);
-        if (!error) return null;
-
-        const errors = {};
-
-        for (let item of error.details) {
-            errors[item.path[0]] = item.message;
-        }
-        return errors;
-    }
-
-    validateProperty = ({name, value}) => {
-        const obj = {[name]: value};
-        const schema = {[name]: this.schema[name]};
-        const {error} = Joi.validate(obj, schema);
-        return error ? error.details[0].message : null;
-    }
-    handleSubmit = (e) => {
-        e.preventDefault();
-
-        const errors = this.validate();
-        this.setState({errors: errors || {}});
-        if (errors) return
-
-        console.log("submitted form")
-        // console.log(this.username.current.value)
-    }
-    handleAccountChange = ({currentTarget: input}) => {
-        const errors = {...this.state.errors}
-        const errorMessage = this.validateProperty(input);
-
-        if (errorMessage) {
-            errors[input.name] = errorMessage
-        } else {
-            delete errors[input.name];
-        }
-        const account = {...this.state.data}
-        account[input.name] = input.value;
-        this.setState({
-            account, errors
-        })
+    doSubmit = () => {
+        console.log("doSubmit called");
     }
 
     render() {
@@ -75,7 +35,7 @@ export default class LoginForm extends React.Component {
                         name="username"
                         value={data.username}
                         label="Username"
-                        onChange={this.handleAccountChange}
+                        onChange={this.handleChange}
                         type={"text"}
                         error={errors.username}
                     />
@@ -83,7 +43,7 @@ export default class LoginForm extends React.Component {
                         name="password"
                         value={data.password}
                         label="Password"
-                        onChange={this.handleAccountChange}
+                        onChange={this.handleChange}
                         type={"password"}
                         error={errors.password}
                     />
