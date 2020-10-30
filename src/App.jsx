@@ -8,7 +8,7 @@ import Navbar from "./components/navbar";
 import MovieForm from "./components/movie_form";
 import LoginForm from "./components/loginForm";
 import "./App.css";
-import SignupForm from "./components/signupForm";
+import RegisterForm from "./components/registerForm";
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
                 <Switch>
                     <Route path="/movies/:id" component={MovieForm}/>
                     <Route path="/login" component={LoginForm}/>
-                    <Route path="/signup" component={SignupForm}/>
+                    <Route path="/register" component={RegisterForm}/>
                     <Route path="/movies" component={Movies}/>
                     <Route path="/customers" component={Customers}/>
                     <Route path="/rentals" component={Rentals}/>
