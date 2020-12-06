@@ -66,7 +66,27 @@ export default class Form extends React.Component {
             </button>
         )
     }
-
+    renderSelect(name, label, options){
+        const {data, errors} = this.state;
+        return (
+            <React.Fragment>
+            <label htmlFor="sel1">{label}</label>
+            <select
+                className="form-control"
+                id={name}
+                name={name}
+                value={data[name]}
+                onChange={this.handleSelect}
+                error={errors[name]}
+            >
+                {options.map(o=> <option
+                    onSelect={(e)=>console.log("selected onSelect of option",e)}
+                >{o.name}
+                </option>)}face
+            </select>
+            </React.Fragment>
+        )
+    }
     renderInput(name, label, type="text") {
         const {data, errors} = this.state;
         return (
@@ -79,5 +99,10 @@ export default class Form extends React.Component {
                 error={errors[name]}
             />
         )
+    }
+
+    handleSelect(e) {
+        console.log("called handle select ",e)
+        return null;
     }
 }
