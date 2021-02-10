@@ -6,7 +6,6 @@ import ListGroup from "./common/listGroup";
 import { getGenres } from "../services/fakeGenreService";
 import MoviesTable from "./moviesTable";
 import _ from "lodash";
-import { Container } from "@material-ui/core";
 
 class Movies extends Component {
   state = {
@@ -92,7 +91,7 @@ class Movies extends Component {
     const { pageSize, currentPage, sortColumn } = this.state;
     const { totalCount, data } = this.getPageData();
     return (
-      <Container maxWidth="md">
+      <div className={"container"} maxWidth="md">
         <div className="row">
           <div className="col-3">
             <ListGroup
@@ -129,7 +128,7 @@ class Movies extends Component {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     );
   }
 }
